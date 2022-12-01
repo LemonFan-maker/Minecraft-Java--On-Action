@@ -29,6 +29,7 @@ jobs:
         run: |
           pip install jupyter notebook &>/dev/null
           pip install --force-reinstall MarkupSafe==2.0.1 &>/dev/null
+          pip install --force-reinstall nbconvert==5.6.1 &>/dev/null
           jupyter notebook --generate-config
           rm -rf /home/runner/.jupyter/jupyter_notebook_config.py
           cp jupyter_notebook_config.py /home/runner/.jupyter/
