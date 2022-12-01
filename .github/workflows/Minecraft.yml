@@ -10,12 +10,10 @@ jobs:
         run: |
           sudo apt-get install netdata -y &>/dev/null && echo "监测平台安装成功." || echo "安装失败，请检查网络连接或更新apt cache"
           sudo netdata -d -i 127.0.0.1 -p 8089
-          sudo curl -Ls https://github.com/ekzhang/bore/releases/download/v0.4.0/bore-v0.4.0-x86_64-unknown-linux-musl.tar.gz | sudo tar zx -C /usr/bin
-          chmod a+x /usr/bin/bore
-          nohup bore local 8089 --to bore.pub &
-          sleep 8
-          echo =+=+=+=+=+=+=+=+=+=+=+=+成功安装服务，地址如下+=+=+=+=+=+=+=+=+=+=+=+=
-          cat nohup.out | grep bore.pub
+          wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x cloudflared-linux-amd64
+          nohup ./cloudflared-linux-amd64 tunnel --url 127.0.0.1:8089 &
+          sleep 10 && cat nohup.out
+          echo =+=+=+=+=+=+=+=+=+=+=+=+成功安装服务，地址如下+=+=+=+=+=+=+=+=+=+=+=+=          
           
       - name: 安装Minecraft依赖
         run: |
