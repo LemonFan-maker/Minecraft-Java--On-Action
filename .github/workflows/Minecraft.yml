@@ -35,7 +35,7 @@ jobs:
           jupyter nbconvert --to notebook --execute check_java_version.ipynb --output check_java_version.ipynb
       - name: 创建server服务
         run: |
-          runipy create_server.ipynb
+          jupyter nbconvert --to notebook --execute create_server.ipynb --output create_server.ipynb
       - name: 自动Eula
         run: |
           cd /home/runner/work/Minecraft-Java--On-Action/Minecraft-Java--On-Action/Minecraft-Server/
@@ -45,4 +45,4 @@ jobs:
       - name: 启动server 
         run: |
           cd /home/runner/work/Minecraft-Java--On-Action/Minecraft-Java--On-Action/
-          runipy start_server.ipynb
+           jupyter nbconvert --to notebook --execute start_server.ipynb --output start_server.ipynb
