@@ -1,4 +1,4 @@
-name: 安装 GitHub 监测平台
+name: Play-Minecraft-On-Action
 on:
   workflow_dispatch:
 jobs:
