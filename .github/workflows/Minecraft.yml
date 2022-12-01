@@ -23,7 +23,6 @@ jobs:
           
       - name: 安装Minecraft依赖
         run: |
-          pip uninstall markupsafe -y
           python -m pip install markupsafe==2.0.1 -y
           pip install jupyter -y
           python -m pip install ipykernel -U --force-reinstall
