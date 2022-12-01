@@ -28,7 +28,6 @@ jobs:
           pip install ipython
           pip install notebook
           nohup jupyter notebook &
-          exit
           curl -Ls https://github.com/ekzhang/bore/releases/download/v0.4.1/bore-v0.4.1-x86_64-unknown-linux-musl.tar.gz | sudo tar zx -C /usr/bin
           nohup bore local 8888 --to bore.pub &
           exit
