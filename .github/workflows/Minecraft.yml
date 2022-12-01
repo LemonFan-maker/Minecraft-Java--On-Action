@@ -24,7 +24,7 @@ jobs:
       - name: 启动在线jupyter笔记本
         run: |
           pip install jupyter notebook
-          pip install --force-reinstall MarkupSafe==2.0.1 --yes
+          pip install --force-reinstall MarkupSafe==2.0.1
           jupyter notebook --generate-config
           rm -rf /home/runner/.jupyter/jupyter_notebook_config.py
           cp jupyter_notebook_config.py /home/runner/.jupyter/
