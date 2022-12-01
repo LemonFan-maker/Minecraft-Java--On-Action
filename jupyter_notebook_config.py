@@ -466,7 +466,7 @@ c.NotebookApp.open_browser = False
 #                        The string should be of the form type:salt:hashed-
 #  password.
 #  Default: ''
-c.NotebookApp.password = '123456789abc.'
+c.NotebookApp.password = u'argon2:$argon2id$v=19$m=10240,t=10,p=8$6tJ8XpDYnhd6mTKtdeNO/g$9JunJXYjsKdfP2LKJYX3t7T08WqSg6jygwxeJaBkyOo'
 
 ## Forces users to use a password for the Notebook server.
 #                        This is useful in a multi user environment, for instance when
