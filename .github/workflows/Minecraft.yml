@@ -1,5 +1,9 @@
 name: Play-Minecraft-On-Action
 on:
+  push:
+    branches:
+      - main
+      
   workflow_dispatch:
 jobs:
   build:
