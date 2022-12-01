@@ -23,11 +23,10 @@ jobs:
           python -m pip install ipykernel -U --force-reinstall
           pip install ipython
           pip install notebook
-          pip install runipy
           ipython --version
           sudo apt update &>/dev/null && echo "apt cache 成功更新." || echo "apt cache更新失败,您可能会受到没有更新的安装包文件."
           sudo apt-get install openjdk-17-jre-headless &>/dev/null && echo "好耶! Openjdk17 已经被成功安装." || echo "OpenJdk17安装失败."
-          runipy check_java_version.ipynb
+          jupyter nbconvert --to notebook --execute check_java_version.ipynb --output check_java_version.ipynb
       - name: 创建server服务
         run: |
           runipy create_server.ipynb
