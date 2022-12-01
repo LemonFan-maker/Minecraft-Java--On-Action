@@ -1,0 +1,39 @@
+name: 安装 GitHub 监测平台
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: 安装 GitHub 监测平台
+        run: |
+          sudo apt-get install netdata -y
+          netdata -d  -i 127.0.0.1
+          wget https://github.com/ekzhang/bore/releases/download/v0.4.1/bore-v0.4.1-x86_64-unknown-linux-musl.tar.gz
+          tar -xvf bore-v0.4.1-x86_64-unknown-linux-musl.tar.gz
+          chmod a+x bore
+          nohup ./bore local 19999 --to bore.pub &
+          sleep 8s
+          echo =+=+=+=+=+=+=+=+=+=+=+=+成功安装服务，地址如下+=+=+=+=+=+=+=+=+=+=+=+=
+          cat nohup.out 
+          
+      - name: 安装Minecraft依赖
+        run: |
+          sudo apt update &>/dev/null && echo "apt cache 成功更新." || echo "apt cache更新失败,您可能会受到没有更新的安装包文件."
+          sudo apt-get install openjdk-17-jre-headless &>/dev/null && echo "好耶! Openjdk17 已经被成功安装." || echo "OpenJdk17安装失败."
+          python check_java_version.py
+      - name: 创建server服务
+        run: |
+          pip install runipy
+          runipy create_server.ipynb
+      - name: 自动Eula
+        run: |
+          cd /home/runner/work/Minecraft-Java--On-Action/Minecraft-Java--On-Action/Minecraft-Server/
+          sed -i '$d' eula.txt
+          cat eula.txt
+          echo "eula=true" >> eula.txt
+      - name: 启动server 
+        run: |
+          cd /home/runner/work/Minecraft-Java--On-Action/Minecraft-Java--On-Action/
+          runipy start_server.ipynb
