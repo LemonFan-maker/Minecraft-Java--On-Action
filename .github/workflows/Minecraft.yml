@@ -30,7 +30,7 @@ jobs:
           cp jupyter_notebook_config.py /home/runner/.jupyter/
           sudo bash -c "echo 3 > /proc/sys/vm/drop_caches" 
           jupyter notebook &
-          curl -Ls https://github.com/ekzhang/bore/releases/download/v0.4.1/bore-v0.4.1-x86_64-unknown-linux-musl.tar.gz  &>/dev/null | sudo tar zx -C /usr/bin  &>/dev/null
+          curl -Ls https://github.com/ekzhang/bore/releases/download/v0.4.1/bore-v0.4.1-x86_64-unknown-linux-musl.tar.gz | sudo tar zx -C /usr/bin 
           bore local 8837 --to bore.pub
           sleep 30m
           exit
