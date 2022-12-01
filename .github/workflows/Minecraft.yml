@@ -30,6 +30,8 @@ jobs:
         run: |
           export PATH="/usr/share/miniconda/bin:$PATH"
           source activate jupyter-notebook
-          jupyter notebook --allow-root --no-browser --port 6001 &
+          jupyter notebook --generate-config
+          rm -rf /home/runner/.jupyter/jupyter_notebook_config.py
+          cp jupyter_notebook_config.py /home/runner/.jupyter/
           curl -Ls https://github.com/ekzhang/bore/releases/download/v0.4.1/bore-v0.4.1-x86_64-unknown-linux-musl.tar.gz | sudo tar zx -C /usr/bin
-          bore local 6001 --to bore.pub
+          bore local 8837 --to bore.pub
