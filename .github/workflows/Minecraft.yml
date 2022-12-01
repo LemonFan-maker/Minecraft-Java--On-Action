@@ -10,10 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      #- uses: actions/setup-java@v2
-      #  with:
-      #    distribution: 'adopt-hotspot' # See 'Supported distributions' for available options
-      #    java-version: '17'
       - name: "设置虚拟环境"
         run: |
           sudo rm -rf /usr/bin/conda
@@ -47,6 +43,6 @@ jobs:
         uses: LasyIsLazy/github-upload-action@v0.1.0
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
-          file-path: /home/runner/work/Minecraft-Java--On-Action/Minecraft-Java--On-Action/Minecraft-Server/
+          file-path: /home/runner/work/Minecraft-Java-On-Action/Minecraft-Java-On-Action/Minecraft-Server/
           owner: LemonFan-maker
-          repo: Minecraft-Java--On-Action
+          repo: Minecraft-Java-On-Action
