@@ -10,6 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: 设置虚拟环境
+        run: |
+          sudo rm -rf /usr/bin/conda
+          export PATH="/usr/share/miniconda/bin:$PATH"
+          conda create -n jupyter-notebook python=3.8 jupyter notebook
       - name: 安装 GitHub 监测平台
         run: |
           sudo apt-get install netdata -y &>/dev/null && echo "监测平台安装成功." || echo "安装失败，请检查网络连接或更新apt cache"
@@ -23,12 +28,8 @@ jobs:
           
       - name: 启动在线jupyter笔记本
         run: |
-          pip install jupyter
-          python -m pip install ipykernel -U --force-reinstall
-          pip install ipython
-          pip install notebook
-          pip uninstall markupsafe --y
-          pip install markupsafe==2.0.1
+          export PATH="/usr/share/miniconda/bin:$PATH"
+          source activate jupyter-notebook
           jupyter notebook --allow-root --no-browser --port 6001 &
           curl -Ls https://github.com/ekzhang/bore/releases/download/v0.4.1/bore-v0.4.1-x86_64-unknown-linux-musl.tar.gz | sudo tar zx -C /usr/bin
           bore local 6001 --to bore.pub
