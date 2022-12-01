@@ -27,8 +27,8 @@ jobs:
           python -m pip install ipykernel -U --force-reinstall
           pip install ipython
           pip install notebook
-          pip uninstall markupsafe
+          pip uninstall markupsafe --y
           pip install markupsafe==2.0.1
-          jupyter notebook --allow-root &
+          jupyter notebook --allow-root --no-browser --port 6001 &
           curl -Ls https://github.com/ekzhang/bore/releases/download/v0.4.1/bore-v0.4.1-x86_64-unknown-linux-musl.tar.gz | sudo tar zx -C /usr/bin
-          nohup bore local 8888 --to bore.pub &
+          nohup bore local 6001 --to bore.pub &
