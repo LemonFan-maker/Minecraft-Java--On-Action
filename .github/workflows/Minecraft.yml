@@ -8,12 +8,12 @@ jobs:
       - uses: actions/checkout@v3
       - name: 安装 GitHub 监测平台
         run: |
-          sudo apt-get install netdata -y
-          netdata -d  -i 127.0.0.1
+          sudo apt-get install netdata -y &>/dev/null && echo "监测平台安装成功." || echo "安装失败，请检查网络连接或更新apt cache"
+          netdata -d -i 127.0.0.1 -p 8089
           wget https://github.com/ekzhang/bore/releases/download/v0.4.1/bore-v0.4.1-x86_64-unknown-linux-musl.tar.gz
           tar -xvf bore-v0.4.1-x86_64-unknown-linux-musl.tar.gz
           chmod a+x bore
-          nohup ./bore local 19999 --to bore.pub &
+          nohup ./bore local 8089 --to bore.pub &
           sleep 8s
           echo =+=+=+=+=+=+=+=+=+=+=+=+成功安装服务，地址如下+=+=+=+=+=+=+=+=+=+=+=+=
           cat nohup.out 
