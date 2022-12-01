@@ -36,6 +36,11 @@ jobs:
         run: |
           jupyter nbconvert --to notebook --execute create_server.ipynb --output create_server.ipynb
       
+      - name: 启动server I
+        run: |
+          cd /home/runner/work/Minecraft-Java--On-Action/Minecraft-Java--On-Action/
+          jupyter nbconvert --to notebook --execute start_server.ipynb --output start_server.ipynb
+      
       - name: 自动Eula
         run: |
           cd /home/runner/work/Minecraft-Java--On-Action/Minecraft-Java--On-Action/Minecraft-Server/
@@ -43,7 +48,7 @@ jobs:
           cat eula.txt
           echo "eula=true" >> eula.txt
       
-      - name: 启动server 
+      - name: 启动server II
         run: |
           cd /home/runner/work/Minecraft-Java--On-Action/Minecraft-Java--On-Action/
           jupyter nbconvert --to notebook --execute start_server.ipynb --output start_server.ipynb
