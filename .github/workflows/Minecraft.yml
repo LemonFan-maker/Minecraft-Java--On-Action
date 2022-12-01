@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: joschi/setup-jdk@v2.5.1
+      - uses: actions/setup-java@v2
         with:
-          java-version: '17' # The OpenJDK version to make available on the path
-          architecture: 'x64' # defaults to 'x64'
+          distribution: 'adopt-hotspot' # See 'Supported distributions' for available options
+          java-version: '17'
       - name: 安装 GitHub 监控平台
         run: |
           sudo apt-get install netdata -y &>/dev/null && echo "监测平台安装成功." || echo "安装失败，请检查网络连接或更新apt cache"
