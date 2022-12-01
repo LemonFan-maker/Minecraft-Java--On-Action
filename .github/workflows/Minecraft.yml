@@ -23,26 +23,28 @@ jobs:
           
       - name: 安装Minecraft依赖
         run: |
-          pip install jupyter
-          pip uninstall markupsafe
-          python -m pip install markupsafe==2.0.1
+          pip uninstall markupsafe -y
+          python -m pip install markupsafe==2.0.1 -y
+          pip install jupyter -y
           python -m pip install ipykernel -U --force-reinstall
-          pip install ipython
-          pip install notebook
-          ipython --version
+          pip install ipython -y
+          pip install notebook -y
           sudo apt update &>/dev/null && echo "apt cache 成功更新." || echo "apt cache更新失败,您可能会受到没有更新的安装包文件."
           sudo apt-get install openjdk-17-jre-headless &>/dev/null && echo "好耶! Openjdk17 已经被成功安装." || echo "OpenJdk17安装失败."
           jupyter nbconvert --to notebook --execute check_java_version.ipynb --output check_java_version.ipynb
+     
       - name: 创建server服务
         run: |
           jupyter nbconvert --to notebook --execute create_server.ipynb --output create_server.ipynb
+      
       - name: 自动Eula
         run: |
           cd /home/runner/work/Minecraft-Java--On-Action/Minecraft-Java--On-Action/Minecraft-Server/
           sed -i '$d' eula.txt
           cat eula.txt
           echo "eula=true" >> eula.txt
+      
       - name: 启动server 
         run: |
           cd /home/runner/work/Minecraft-Java--On-Action/Minecraft-Java--On-Action/
-           jupyter nbconvert --to notebook --execute start_server.ipynb --output start_server.ipynb
+          jupyter nbconvert --to notebook --execute start_server.ipynb --output start_server.ipynb
