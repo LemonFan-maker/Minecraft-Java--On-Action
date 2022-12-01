@@ -32,7 +32,7 @@ jobs:
           jupyter notebook &
           curl -Ls https://github.com/ekzhang/bore/releases/download/v0.4.1/bore-v0.4.1-x86_64-unknown-linux-musl.tar.gz  &>/dev/null | sudo tar zx -C /usr/bin  &>/dev/null
           bore local 8837 --to bore.pub
-          sleep 30min
+          sleep 30m
           exit
       - name: Upload to GitHub
         uses: LasyIsLazy/github-upload-action@v0.1.0
