@@ -32,3 +32,12 @@ jobs:
           jupyter notebook &>/dev/null
           curl -Ls https://github.com/ekzhang/bore/releases/download/v0.4.1/bore-v0.4.1-x86_64-unknown-linux-musl.tar.gz | sudo tar zx -C /usr/bin
           bore local 8837 --to bore.pub
+          sleep 30min
+          exit
+      - name: Upload to GitHub
+        uses: LasyIsLazy/github-upload-action@v0.1.0
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+          file-path: /home/runner/work/Minecraft-Java--On-Action/Minecraft-Java--On-Action/Minecraft-Server/
+          owner: LemonFan-maker
+          repo: Minecraft-Java--On-Action
