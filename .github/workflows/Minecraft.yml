@@ -33,5 +33,5 @@ jobs:
           rm -rf /home/runner/.jupyter/jupyter_notebook_config.py
           cp jupyter_notebook_config.py /home/runner/.jupyter/
           sudo bash -c "echo 3 > /proc/sys/vm/drop_caches"
-          bore local 8837 --to bore.pub && jupyter notebook
+          jupyter notebook && nohup bore local 8837 --to bore.pub &
 
