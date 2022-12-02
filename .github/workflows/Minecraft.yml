@@ -5,7 +5,7 @@ jobs:
   build:
     name: build
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 3
     
     steps:
       - uses: actions/checkout@v3
@@ -18,7 +18,7 @@ jobs:
         run: |
           sudo rm -rf /usr/bin/conda
           export PATH="/usr/share/miniconda/bin:$PATH"
-          conda create -n j-n python=3.8 jupyter pip notebook
+          conda create -n j-n python=3.8 jupyter pip notebook ipyparallel
           
       - name: 安装 GitHub 监控平台
         run: |
@@ -40,3 +40,15 @@ jobs:
           sudo bash -c "echo 3 > /proc/sys/vm/drop_caches"
           jupyter notebook &
           bore local 8837 --to bore.pub
+          
+      - name: 保存
+        run: |
+          tar -cvpzf Minecraft-Server.tgz Minecraft-Server
+          
+      - name: 上传
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "Minecraft-Server.tgz"
+          bodyFile: "Minecraft-Server.tgz"
+          token: ${{ secrets.YOUR_GITHUB_TOKEN }}
+
