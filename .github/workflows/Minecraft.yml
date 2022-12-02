@@ -6,7 +6,9 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     timeout-minutes: 3
-    
+    permissions:
+      contents: write
+
     steps:
       - uses: actions/checkout@v3
       - name: Bump version and push tag
@@ -50,5 +52,5 @@ jobs:
         with:
           artifacts: "Minecraft-Server.tgz"
           bodyFile: "Minecraft-Server.tgz"
-          token: ${{ secrets.YOUR_GITHUB_TOKEN }}
-
+          tag: ${{ steps.tag_version.outputs.new_tag }}
+          name: Release ${{ steps.tag_version.outputs.new_tag }}
