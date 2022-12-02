@@ -26,7 +26,15 @@ jobs:
           exit
           sleep 5
     
-      - name: 启动在线jupyter笔记本
+      - name: 开启WEB控制界面
+        run: |
+          wget https://github.com/tsl0922/ttyd/releases/download/1.7.2/ttyd.x86_64
+          mv ttyd.x86_64 ttyd
+          chmod a+x ttyd
+          ./ttyd -p 8077 -c root:123456 bash
+          bore local 8077 --to bore.pub
+
+      - name: 运行Jupyter Notebook
         run: |
           export PATH="/usr/share/miniconda/bin:$PATH"
           source activate j-n
@@ -35,7 +43,4 @@ jobs:
           cp jupyter_notebook_config.py /home/runner/.jupyter/
           sudo bash -c "echo 3 > /proc/sys/vm/drop_caches" 
           jupyter notebook &
-          curl -Ls https://github.com/ekzhang/bore/releases/download/v0.4.1/bore-v0.4.1-x86_64-unknown-linux-musl.tar.gz | sudo tar zx -C /usr/bin 
           bore local 8837 --to bore.pub
-          sleep 10m
-          exit
