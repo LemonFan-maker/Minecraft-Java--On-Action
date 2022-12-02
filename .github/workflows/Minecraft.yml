@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
+    name: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -27,7 +28,8 @@ jobs:
           nohup bore local 8089 --to bore.pub &
           exit
           
-  job2:
+  test:
+    name: test
     runs-on: ubuntu-latest
     needs: build
     steps:
