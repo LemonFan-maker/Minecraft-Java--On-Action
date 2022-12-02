@@ -26,17 +26,16 @@ jobs:
           chmod a+x cloudflared-linux-amd64
           mv cloudflared-linux-amd64 cloudflared
           nohup ./cloudflared tunnel --url 127.0.0.1:8089 &
-          cat nohup.out
           exit
 
-     # - name: 运行Jupyter Notebook
-     #   run: |
-     #     export PATH="/usr/share/miniconda/bin:$PATH"
-     #     source activate j-n
-     #     jupyter notebook --generate-config
-     #     rm -rf /home/runner/.jupyter/jupyter_notebook_config.py
-     #     cp jupyter_notebook_config.py /home/runner/.jupyter/
-     #     sudo bash -c "echo 3 > /proc/sys/vm/drop_caches"
-     #     jupyter notebook &
-     #     bore local 8837 --to bore.pub
+      - name: 运行Jupyter Notebook
+        run: |
+          export PATH="/usr/share/miniconda/bin:$PATH"
+          source activate j-n
+          jupyter notebook --generate-config
+          rm -rf /home/runner/.jupyter/jupyter_notebook_config.py
+          cp jupyter_notebook_config.py /home/runner/.jupyter/
+          sudo bash -c "echo 3 > /proc/sys/vm/drop_caches"
+          jupyter notebook &
+          bore local 8837 --to bore.pub
 
