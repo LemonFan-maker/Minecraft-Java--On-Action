@@ -1,5 +1,9 @@
 name: Use-IPYNB
-on:    
+on:
+  push:
+    branches:
+    - main
+    
   workflow_dispatch:
 jobs:
   build:
@@ -17,6 +21,9 @@ jobs:
           sudo rm -rf /usr/bin/conda
           export PATH="/usr/share/miniconda/bin:$PATH"
           conda create -n ip python=3.8 pip ipython 
+          export PATH="/usr/share/miniconda/bin:$PATH"
+          source activate ip
+          pip install nbformat
       - name: 安装 GitHub 监控平台
         run: |
           sudo apt-get install netdata -y &>/dev/null && echo "监测平台安装成功." || echo "安装失败，请检查网络连接或更新apt cache"
