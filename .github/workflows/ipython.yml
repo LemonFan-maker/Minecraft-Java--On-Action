@@ -18,6 +18,7 @@ jobs:
           export PATH="/usr/share/miniconda/bin:$PATH"
           source activate ip
           pip install nbformat
+
       - name: 安装 GitHub 监控平台
         run: |
           sudo apt-get install netdata -y &>/dev/null && echo "监测平台安装成功." || echo "安装失败，请检查网络连接或更新apt cache"
@@ -50,4 +51,5 @@ jobs:
           ipython -c "%run 5.allow_eula.ipynb"
           ipython -c "%run 6.start_serverII.ipynb"
           echo succeed.
+          rm -rf /home/runner/.ngrok2
           exit
