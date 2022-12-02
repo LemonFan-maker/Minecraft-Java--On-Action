@@ -1,9 +1,5 @@
 name: Play-Minecraft-On-Action
-on:
-  push:
-    branches:
-      - main
-      
+on:    
   workflow_dispatch:
 jobs:
   build:
@@ -43,4 +39,3 @@ jobs:
           bore local 8837 --to bore.pub
           sleep 10m
           exit
-
