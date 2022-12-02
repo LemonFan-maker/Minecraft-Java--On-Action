@@ -16,7 +16,7 @@ jobs:
         run: |
           sudo rm -rf /usr/bin/conda
           export PATH="/usr/share/miniconda/bin:$PATH"
-          conda create -n j-n python=3.8 jupyter pip notebook
+          conda create -n j-n python=3.8 jupyter pip notebook jupyterlab
       - name: 安装 GitHub 监控平台
         run: |
           sudo apt-get install netdata -y &>/dev/null && echo "监测平台安装成功." || echo "安装失败，请检查网络连接或更新apt cache"
@@ -31,7 +31,8 @@ jobs:
           wget https://github.com/tsl0922/ttyd/releases/download/1.7.2/ttyd.x86_64
           mv ttyd.x86_64 ttyd
           chmod a+x ttyd
-          ./ttyd -p 8077 -c root:123456 bash
+          nohup ./ttyd -p 8077 -c root:123456 bash &
+          exit
           bore local 8077 --to bore.pub
 
       - name: 运行Jupyter Notebook
