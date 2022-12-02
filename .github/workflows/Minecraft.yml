@@ -16,7 +16,8 @@ jobs:
         run: |
           sudo rm -rf /usr/bin/conda
           export PATH="/usr/share/miniconda/bin:$PATH"
-          conda create -n j-n python=3.8 jupyter pip notebook jupyterlab
+          conda create -n j-n python=3.8 jupyter pip notebook
+          
       - name: 安装 GitHub 监控平台
         run: |
           sudo sysctl -w net.core.rmem_max=2500000
@@ -25,14 +26,22 @@ jobs:
           curl -Ls https://github.com/ekzhang/bore/releases/download/v0.4.1/bore-v0.4.1-x86_64-unknown-linux-musl.tar.gz | sudo tar zx -C /usr/bin
           nohup bore local 8089 --to bore.pub &
           exit
-
-      - name: 运行Jupyter Notebook
-        run: |
+          
+  job2:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - run: |
           export PATH="/usr/share/miniconda/bin:$PATH"
           source activate j-n
-          jupyter notebook --generate-config
-          rm -rf /home/runner/.jupyter/jupyter_notebook_config.py
-          cp jupyter_notebook_config.py /home/runner/.jupyter/
-          sudo bash -c "echo 3 > /proc/sys/vm/drop_caches"
-          jupyter notebook &
-          bore local 8837 --to bore.pub
+        
+      #- name: 运行Jupyter Notebook
+      #  run: |
+      #    export PATH="/usr/share/miniconda/bin:$PATH"
+      #    source activate j-n
+      #    jupyter notebook --generate-config
+      #    rm -rf /home/runner/.jupyter/jupyter_notebook_config.py
+      #    cp jupyter_notebook_config.py /home/runner/.jupyter/
+      #    sudo bash -c "echo 3 > /proc/sys/vm/drop_caches"
+      #    jupyter notebook &
+      #    bore local 8837 --to bore.pub
