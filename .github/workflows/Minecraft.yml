@@ -31,9 +31,9 @@ jobs:
           wget https://github.com/tsl0922/ttyd/releases/download/1.7.2/ttyd.x86_64
           mv ttyd.x86_64 ttyd
           chmod a+x ttyd
+          bore local 8077 --to bore.pub
           nohup ./ttyd -p 8077 -c root:123456 bash &
           exit
-          bore local 8077 --to bore.pub
 
       - name: 运行Jupyter Notebook
         run: |
@@ -42,6 +42,7 @@ jobs:
           jupyter notebook --generate-config
           rm -rf /home/runner/.jupyter/jupyter_notebook_config.py
           cp jupyter_notebook_config.py /home/runner/.jupyter/
-          sudo bash -c "echo 3 > /proc/sys/vm/drop_caches" 
+          sudo bash -c "echo 3 > /proc/sys/vm/drop_caches"
+          bore local 8837 --to bore.pub 
           jupyter notebook &
-          bore local 8837 --to bore.pub
+
