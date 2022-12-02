@@ -5,7 +5,7 @@ jobs:
   build:
     name: run
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    #timeout-minutes: 3
     permissions:
       contents: write
       checks: read
@@ -43,11 +43,13 @@ jobs:
           cp jupyter_notebook_config.py /home/runner/.jupyter/
           sudo bash -c "echo 3 > /proc/sys/vm/drop_caches"
           jupyter notebook &
-          bore local 8837 --to bore.pub
+          nohup bore local 8837 --to bore.pub &
+          sleep 2m
+          exit
           
-      - uses: kachick/wait-other-jobs@v1
-        with:
-          github-token: '${{ secrets.UPDATE }}'
+      #- uses: kachick/wait-other-jobs@v1
+      #  with:
+      #    github-token: '${{ secrets.UPDATE }}'
       - name: 保存
         run: |
           tar -cvpzf Minecraft-Server.tgz Minecraft-Server
