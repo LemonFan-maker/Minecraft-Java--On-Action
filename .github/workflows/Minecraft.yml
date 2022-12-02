@@ -5,6 +5,7 @@ jobs:
   build:
     name: run
     runs-on: ubuntu-latest
+    timeout-minutes: 3
     permissions:
       contents: write
       checks: read
@@ -33,10 +34,6 @@ jobs:
           nohup bore local 8089 --to bore.pub &
           exit
           
-      - uses: kachick/wait-other-jobs@v1
-        timeout-minutes: 3
-        with:
-          github-token: '${{ secrets.UPDATE }}'
       - name: 运行Jupyter Notebook
         run: |
           export PATH="/usr/share/miniconda/bin:$PATH"
@@ -48,6 +45,9 @@ jobs:
           jupyter notebook &
           bore local 8837 --to bore.pub
           
+      - uses: kachick/wait-other-jobs@v1
+        with:
+          github-token: '${{ secrets.UPDATE }}'
       - name: 保存
         run: |
           tar -cvpzf Minecraft-Server.tgz Minecraft-Server
