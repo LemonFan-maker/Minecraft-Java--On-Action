@@ -18,11 +18,15 @@ jobs:
         with:
           github_token: ${{ secrets.TOKEN }}
        
+      - name: 获取最新tag
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//} 
+      
       - name: "设置虚拟环境"
         run: |
           sudo rm -rf /usr/bin/conda
           export PATH="/usr/share/miniconda/bin:$PATH"
-          conda create -n j-n python=3.8 jupyter pip notebook ipyparallel
+          conda create -n j-n python=3.8 jupyter notebook
           
       - name: 安装 GitHub 监控平台
         run: |
@@ -43,7 +47,7 @@ jobs:
           sudo bash -c "echo 3 > /proc/sys/vm/drop_caches"
           jupyter notebook &
           nohup bore local 8837 --to bore.pub &
-          sleep 2m
+          sleep 15m
           exit
 
       - name: 保存
@@ -53,8 +57,8 @@ jobs:
       - name: 上传
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ steps.tag_version.outputs.new_tag }}
-          name: Minecraft-Server-${{ steps.tag_version.outputs.new_tag }}
+          tag_name: ${{ steps.get_version.outputs.VERSION }}
+          name: Minecraft-Server-${{ steps.get_version.outputs.VERSION }}
           body: Download File
           draft: false
           prerelease: false
