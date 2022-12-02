@@ -12,16 +12,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        name: Bump version and push tag
         id: tag_version
       - uses: mathieudutour/github-tag-action@v6.1
         with:
           github_token: ${{ secrets.TOKEN }}
        
-      - name: 获取最新tag
-        id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//} 
-      
       - name: "设置虚拟环境"
         run: |
           sudo rm -rf /usr/bin/conda
@@ -57,8 +52,8 @@ jobs:
       - name: 上传
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ steps.get_version.outputs.VERSION }}
-          name: Minecraft-Server-${{ steps.get_version.outputs.VERSION }}
+          tag_name: ${{ github.ref }}
+          name: Minecraft-Server-${{ github.ref }}
           body: Download File
           draft: false
           prerelease: false
