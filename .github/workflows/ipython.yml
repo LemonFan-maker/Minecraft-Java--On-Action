@@ -31,11 +31,11 @@ jobs:
           export PATH="/usr/share/miniconda/bin:$PATH"
           source activate ip
           sudo bash -c "echo 3 > /proc/sys/vm/drop_caches" 
-          ipython "%run 1.delete_all_java_runtime.ipynb"
-          ipython "%run 2.check_java_version.ipynb"
-          ipython "%run 3.create_server.ipynb"
-          ipython "%run 4.start_serverI.ipynb"
-          ipython "%run 5.allow_eula.ipynb"
-          ipython "%run 6.start_serverII.ipynb"
+          ipython -c "%run 1.delete_all_java_runtime.ipynb"
+          ipython -c "%run 2.check_java_version.ipynb"
+          ipython -c "%run 3.create_server.ipynb"
+          ipython -c "%run 4.start_serverI.ipynb"
+          ipython -c "%run 5.allow_eula.ipynb"
+          ipython -c "%run 6.start_serverII.ipynb"
           echo succeed.
           exit
