@@ -23,7 +23,7 @@ jobs:
           github_token: ${{ secrets.TOKEN }}
 
       - name: 设置虚拟环境
-       run: |
+        run: |
          sudo rm -rf /usr/bin/conda
          export PATH="/usr/share/miniconda/bin:$PATH"
          conda create -n j-n python=3.8 jupyter notebook
