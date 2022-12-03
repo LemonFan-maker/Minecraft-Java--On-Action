@@ -1,5 +1,9 @@
 name: Play-Minecraft-On-Action
-on:    
+on: 
+  push:
+    branches:
+    - main
+    
   workflow_dispatch:
 jobs:
   build:
@@ -25,6 +29,7 @@ jobs:
           
       - name: 安装 GitHub 监控平台
         run: |
+          echo ${{ github.ref }}
           sudo sysctl -w net.core.rmem_max=2500000
           sudo apt-get install netdata -y &>/dev/null && echo "监测平台安装成功." || echo "安装失败，请检查网络连接或更新apt cache"
           sudo netdata -d -i 127.0.0.1 -p 8089
@@ -49,12 +54,12 @@ jobs:
         run: |
           tar -cvpzf Minecraft-Server.tgz Minecraft-Server
           
-      - name: 上传
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: ${{ github.ref }}
-          name: Minecraft-Server-${{ github.ref }}
-          body: Download File
-          draft: false
-          prerelease: false
-          files: /home/runner/work/Minecraft-Java-On-Action/Minecraft-Java-On-Action/Minecraft-Server.tgz
+      #- name: 上传
+      #  uses: softprops/action-gh-release@v1
+      #  with:
+      #    tag_name: ${{ github.ref }}
+      #    name: Minecraft-Server-${{ github.ref }}
+      #    body: Download File
+      #    draft: false
+      #    prerelease: false
+      #    files: /home/runner/work/Minecraft-Java-On-Action/Minecraft-Java-On-Action/Minecraft-Server.tgz
