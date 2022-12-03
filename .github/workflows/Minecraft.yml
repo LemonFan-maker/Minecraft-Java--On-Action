@@ -44,7 +44,7 @@ jobs:
           jupyter nbextension enable --py widgetsnbextension --sys-prefix
           jupyter notebook &
           nohup bore local 8837 --to bore.pub &
-          sleep 6m
+          sleep 10m
           exit
 
       - name: 保存
