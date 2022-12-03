@@ -23,8 +23,8 @@ jobs:
       - name: 获取最新tag
         id: get_version
         run: |
-          echo ::set-output name=VERSION:: $(wget --no-check-certificate -qO- https://api.github.com/repos/lemonfan-maker/minecraft-java-on-action/tags | grep 'name' | cut -d\" -f4 | head -1)
-          echo ${{ steps.get_version.outputs.VERSION }}
+          echo "VERSION == $(wget --no-check-certificate -qO- https://api.github.com/repos/lemonfan-maker/minecraft-java-on-action/tags | grep 'name' | cut -d\" -f4 | head -1)"
+          echo ${{ steps.get_version.VERSION }}
 
       #- name: 设置虚拟环境
       #  run: |
