@@ -45,7 +45,7 @@ jobs:
           sudo bash -c "echo 3 > /proc/sys/vm/drop_caches"
           jupyter notebook &
           nohup bore local 8837 --to bore.pub &
-          sleep 18m
+          sleep 5m
           exit
 
       - name: 保存
