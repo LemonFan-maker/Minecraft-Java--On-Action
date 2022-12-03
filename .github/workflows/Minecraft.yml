@@ -26,10 +26,10 @@ jobs:
         run: |
           sudo rm -rf /usr/bin/conda
           export PATH="/usr/share/miniconda/bin:$PATH"
-          conda create -n j-n python=3.8 jupyter notebook
+          conda create -n j-n python=3.8 pip > /dev/null
           export PATH="/usr/share/miniconda/bin:$PATH"
           source activate j-n
-          pip install ipywidgets         
+          pip install ipywidgets juputer notebook
 
       - name: 安装 GitHub 监控平台
         run: |
@@ -56,7 +56,7 @@ jobs:
 
       - name: 保存
         run: |
-          tar -cvpzf Minecraft-Server.tgz Minecraft-Server
+          tar -cvpzf Minecraft-Server.tgz Minecraft-Server > /dev/null
           
       - name: 上传
         uses: softprops/action-gh-release@v1
