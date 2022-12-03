@@ -1,8 +1,8 @@
 name: Play-Minecraft-On-Action
 on: 
-  #push:
-  #  branches:
-  #  - main
+  push:
+    branches:
+    - main
     
   workflow_dispatch:
 jobs:
@@ -24,9 +24,12 @@ jobs:
 
       - name: 设置虚拟环境
         run: |
-         sudo rm -rf /usr/bin/conda
-         export PATH="/usr/share/miniconda/bin:$PATH"
-         conda create -n j-n python=3.8 jupyter notebook
+          sudo rm -rf /usr/bin/conda
+          export PATH="/usr/share/miniconda/bin:$PATH"
+          conda create -n j-n python=3.8 jupyter notebook
+          export PATH="/usr/share/miniconda/bin:$PATH"
+          source activate j-n
+          pip install ipywidgets         
 
       - name: 安装 GitHub 监控平台
         run: |
@@ -45,9 +48,10 @@ jobs:
           rm -rf /home/runner/.jupyter/jupyter_notebook_config.py
           cp jupyter_notebook_config.py /home/runner/.jupyter/
           sudo bash -c "echo 3 > /proc/sys/vm/drop_caches"
+          jupyter nbextension enable --py widgetsnbextension --sys-prefix
           jupyter notebook &
           nohup bore local 8837 --to bore.pub &
-          sleep 2m
+          sleep 6m
           exit
 
       - name: 保存
