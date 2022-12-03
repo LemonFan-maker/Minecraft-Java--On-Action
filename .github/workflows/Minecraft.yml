@@ -22,10 +22,7 @@ jobs:
         run: |
           sudo rm -rf /usr/bin/conda
           export PATH="/usr/share/miniconda/bin:$PATH"
-          conda create -n j-n python=3.8 pip > /dev/null
-          export PATH="/usr/share/miniconda/bin:$PATH"
-          source activate j-n
-          pip install jupyter notebook ipywidgets 
+          conda create -n j-n python=3.8 jupyter notebook ipywidgets > /dev/null
 
       - name: 安装 GitHub 监控平台
         run: |
@@ -45,7 +42,7 @@ jobs:
           cp jupyter_notebook_config.py /home/runner/.jupyter/
           sudo bash -c "echo 3 > /proc/sys/vm/drop_caches"
           jupyter nbextension enable --py widgetsnbextension --sys-prefix
-          jupyter notebook &
+          jupyter notebook > /dev/null
           nohup bore local 8837 --to bore.pub &
           sleep 6m
           exit
