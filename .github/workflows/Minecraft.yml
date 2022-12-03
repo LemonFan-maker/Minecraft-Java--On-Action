@@ -49,6 +49,7 @@ jobs:
 
       - name: 保存
         run: |
+          sleep 20s
           tar -cvpzf Minecraft-Server.tgz Minecraft-Server > /dev/null
           
       - name: 上传
