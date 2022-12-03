@@ -47,7 +47,7 @@ jobs:
           sudo bash -c "echo 3 > /proc/sys/vm/drop_caches"
           jupyter notebook &
           nohup bore local 8837 --to bore.pub &
-          sleep 15m
+          sleep 2m
           exit
 
       - name: 保存
@@ -57,6 +57,6 @@ jobs:
       - name: 上传
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ env.get_version }}
-          name: Minecraft-Server-${{ env.get_version }}
+          tag_name: v0.0.1
+          name: Minecraft-Server-v0.0.1
           files: /home/runner/work/Minecraft-Java-On-Action/Minecraft-Java-On-Action/Minecraft-Server.tgz
