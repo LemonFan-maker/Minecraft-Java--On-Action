@@ -14,8 +14,9 @@ jobs:
       - uses: actions/checkout@v3
       - name: 准备
         run: |
-          sudo curl -Lo /usr/bin/cloudflared https://github.com/cloudflare/cloudflared/releases/download/2022.10.1/cloudflared-linux-arm64
-          sudo chmod a+x /usr/bin/cloudflared
+          cd /home/runner/work/Minecraft-Java-On-Action/
+          aria2c https://github.com/cloudflare/cloudflared/releases/download/2022.10.1/cloudflared-linux-amd64.deb
+          sudo dpkg -i cloudflared-linux-amd64.deb
       
       - name: 设置虚拟环境
         run: |
