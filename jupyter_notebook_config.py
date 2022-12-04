@@ -8,12 +8,8 @@ c = get_config()  # noqa
 ## This is an application.
 
 ## The date format used by logging formatters for %(asctime)s
-#  Default: '%Y-%m-%d %H:%M:%S'
-# c.Application.log_datefmt = '%Y-%m-%d %H:%M:%S'
 
 ## The Logging format template
-#  Default: '[%(name)s]%(highlevel)s %(message)s'
-# c.Application.log_format = '[%(name)s]%(highlevel)s %(message)s'
 
 ## Set the log level by value or name.
 #  Choices: any of [0, 10, 20, 30, 40, 50, 'DEBUG', 'INFO', 'WARN', 'ERROR', 'CRITICAL']
@@ -68,12 +64,8 @@ c = get_config()  # noqa
 # c.Application.logging_config = {}
 
 ## Instead of starting the Application, dump configuration to stdout
-#  Default: False
-# c.Application.show_config = False
 
 ## Instead of starting the Application, dump configuration to stdout (as JSON)
-#  Default: False
-# c.Application.show_config_json = False
 
 #------------------------------------------------------------------------------
 # JupyterApp(Application) configuration
@@ -81,20 +73,12 @@ c = get_config()  # noqa
 ## Base class for Jupyter applications
 
 ## Answer yes to any prompts.
-#  Default: False
-# c.JupyterApp.answer_yes = False
 
 ## Full path of a config file.
-#  Default: ''
-# c.JupyterApp.config_file = ''
 
 ## Specify a config file to load.
-#  Default: ''
-# c.JupyterApp.config_file_name = ''
 
 ## Generate default config file.
-#  Default: False
-# c.JupyterApp.generate_config = False
 
 ## The date format used by logging formatters for %(asctime)s
 #  See also: Application.log_datefmt
@@ -187,12 +171,8 @@ c.NotebookApp.allow_root = True
 # c.NotebookApp.authenticate_prometheus = True
 
 ## Reload the webapp when changes are made to any Python src files.
-#  Default: False
-# c.NotebookApp.autoreload = False
 
 ## DEPRECATED use base_url
-#  Default: '/'
-# c.NotebookApp.base_project_url = '/'
 
 ## The base URL for the notebook server.
 #  
@@ -210,8 +190,6 @@ c.NotebookApp.allow_root = True
 # c.NotebookApp.browser = ''
 
 ## The full path to an SSL/TLS certificate file.
-#  Default: ''
-# c.NotebookApp.certfile = ''
 
 ## The full path to a certificate authority certificate for SSL/TLS client
 #  authentication.
@@ -227,12 +205,8 @@ c.NotebookApp.allow_root = True
 # c.NotebookApp.config_file_name = ''
 
 ## The config manager class to use
-#  Default: 'notebook.services.config.manager.ConfigManager'
-# c.NotebookApp.config_manager_class = 'notebook.services.config.manager.ConfigManager'
 
 ## The notebook manager class to use.
-#  Default: 'notebook.services.contents.largefilemanager.LargeFileManager'
-# c.NotebookApp.contents_manager_class = 'notebook.services.contents.largefilemanager.LargeFileManager'
 
 ## Extra keyword arguments to pass to `set_secure_cookie`. See tornado's
 #  set_secure_cookie docs for details.
@@ -249,8 +223,6 @@ c.NotebookApp.allow_root = True
 # c.NotebookApp.cookie_secret = b''
 
 ## The file where the cookie secret is stored.
-#  Default: ''
-# c.NotebookApp.cookie_secret_file = ''
 
 ## Override URL shown to users.
 #  
@@ -266,8 +238,6 @@ c.NotebookApp.allow_root = True
 # c.NotebookApp.custom_display_url = ''
 
 ## The default URL to redirect to from `/`
-#  Default: '/tree'
-# c.NotebookApp.default_url = '/tree'
 
 ## Disable cross-site-request-forgery protection
 #  
@@ -296,12 +266,8 @@ c.NotebookApp.allow_root = True
 # c.NotebookApp.enable_mathjax = True
 
 ## extra paths to look for Javascript notebook extensions
-#  Default: []
-# c.NotebookApp.extra_nbextensions_path = []
 
 ## handlers that should be loaded at higher priority than the default services
-#  Default: []
-# c.NotebookApp.extra_services = []
 
 ## Extra paths to search for serving static files.
 #  
@@ -316,8 +282,6 @@ c.NotebookApp.allow_root = True
 #  Default: []
 # c.NotebookApp.extra_template_paths = []
 
-#  Default: ''
-# c.NotebookApp.file_to_run = ''
 
 ## Generate default config file.
 #  See also: JupyterApp.generate_config
@@ -329,9 +293,6 @@ c.NotebookApp.allow_root = True
 # c.NotebookApp.get_secure_cookie_kwargs = {}
 
 ## Deprecated: Use minified JS file or not, mainly use during dev to avoid JS
-#  recompilation
-#  Default: False
-# c.NotebookApp.ignore_minified_js = False
 
 ## (bytes/sec)
 #          Maximum rate at which stream output can be sent on iopub before they are
@@ -346,20 +307,12 @@ c.NotebookApp.allow_root = True
 # c.NotebookApp.iopub_msg_rate_limit = 1000
 
 ## The IP address the notebook server will listen on.
-#  Default: 'localhost'
-# c.NotebookApp.ip = '*'
 
 ## Supply extra arguments that will be passed to Jinja environment.
-#  Default: {}
-# c.NotebookApp.jinja_environment_options = {}
 
 ## Extra variables to supply to jinja templates when rendering.
-#  Default: {}
-# c.NotebookApp.jinja_template_vars = {}
 
 ## The kernel manager class to use.
-#  Default: 'notebook.services.kernels.kernelmanager.MappingKernelManager'
-# c.NotebookApp.kernel_manager_class = 'notebook.services.kernels.kernelmanager.MappingKernelManager'
 
 ## The kernel spec manager class to use. Should be a subclass of
 #  `jupyter_client.kernelspec.KernelSpecManager`.
@@ -370,8 +323,6 @@ c.NotebookApp.allow_root = True
 # c.NotebookApp.kernel_spec_manager_class = 'jupyter_client.kernelspec.KernelSpecManager'
 
 ## The full path to a private key file for usage with SSL/TLS.
-#  Default: ''
-# c.NotebookApp.keyfile = ''
 
 ## Hostnames to allow as local when allow_remote_access is False.
 #  
@@ -403,16 +354,10 @@ c.NotebookApp.allow_root = True
 # c.NotebookApp.logging_config = {}
 
 ## The login handler class to use.
-#  Default: 'notebook.auth.login.LoginHandler'
-# c.NotebookApp.login_handler_class = 'notebook.auth.login.LoginHandler'
 
 ## The logout handler class to use.
-#  Default: 'notebook.auth.logout.LogoutHandler'
-# c.NotebookApp.logout_handler_class = 'notebook.auth.logout.LogoutHandler'
 
 ## The MathJax.js configuration file that is to be used.
-#  Default: 'TeX-AMS-MML_HTMLorMML-full,Safe'
-# c.NotebookApp.mathjax_config = 'TeX-AMS-MML_HTMLorMML-full,Safe'
 
 ## A custom url for MathJax.js.
 #          Should be in the form of a case-sensitive url to MathJax,
@@ -446,8 +391,6 @@ c.NotebookApp.allow_root = True
 # c.NotebookApp.nbserver_extensions = {}
 
 ## The directory to use for notebooks and kernels.
-#  Default: ''
-# c.NotebookApp.notebook_dir = ''
 
 ## Whether to open in a browser after starting.
 #                          The specific browser used is platform dependent and
@@ -487,8 +430,6 @@ c.NotebookApp.port = 8837
 # c.NotebookApp.port_retries = 50
 
 ## DISABLED: use %pylab or %matplotlib in the notebook to enable matplotlib.
-#  Default: 'disabled'
-# c.NotebookApp.pylab = 'disabled'
 
 ## If True, display a button in the dashboard to quit
 #          (shutdown the notebook server).
@@ -501,16 +442,10 @@ c.NotebookApp.quit_button = True
 # c.NotebookApp.rate_limit_window = 3
 
 ## Reraise exceptions encountered loading server extensions?
-#  Default: False
-# c.NotebookApp.reraise_server_extension_failures = False
 
 ## DEPRECATED use the nbserver_extensions dict instead
-#  Default: []
-# c.NotebookApp.server_extensions = []
 
 ## The session manager class to use.
-#  Default: 'notebook.services.sessions.sessionmanager.SessionManager'
-# c.NotebookApp.session_manager_class = 'notebook.services.sessions.sessionmanager.SessionManager'
 
 ## Instead of starting the Application, dump configuration to stdout
 #  See also: Application.show_config
@@ -529,12 +464,8 @@ c.NotebookApp.quit_button = True
 # c.NotebookApp.shutdown_no_activity_timeout = 0
 
 ## The UNIX socket the notebook server will listen on.
-#  Default: ''
-# c.NotebookApp.sock = ''
 
 ## The permissions mode for UNIX socket creation (default: 0600).
-#  Default: '0600'
-# c.NotebookApp.sock_mode = '0600'
 
 ## Supply SSL options for the tornado HTTPServer.
 #              See the tornado docs for details.
@@ -600,8 +531,6 @@ c.NotebookApp.quit_button = True
 # c.NotebookApp.use_redirect_file = True
 
 ## DEPRECATED, use tornado_settings
-#  Default: {}
-# c.NotebookApp.webapp_settings = {}
 
 ## Specify Where to open the notebook on startup. This is the
 #          `new` argument passed to the standard library method `webbrowser.open`.
@@ -647,16 +576,10 @@ c.NotebookApp.quit_button = True
 # c.ConnectionFileMixin.connection_file = ''
 
 ## set the control (ROUTER) port [default: random]
-#  Default: 0
-# c.ConnectionFileMixin.control_port = 0
 
 ## set the heartbeat port [default: random]
-#  Default: 0
-# c.ConnectionFileMixin.hb_port = 0
 
 ## set the iopub (PUB) port [default: random]
-#  Default: 0
-# c.ConnectionFileMixin.iopub_port = 0
 
 ## Set the kernel's IP address [default localhost].
 #          If the IP address is something other than localhost, then
@@ -666,12 +589,8 @@ c.NotebookApp.quit_button = True
 # c.ConnectionFileMixin.ip = ''
 
 ## set the shell (ROUTER) port [default: random]
-#  Default: 0
-# c.ConnectionFileMixin.shell_port = 0
 
 ## set the stdin (ROUTER) port [default: random]
-#  Default: 0
-# c.ConnectionFileMixin.stdin_port = 0
 
 #  Choices: any of ['tcp', 'ipc'] (case-insensitive)
 #  Default: 'tcp'
@@ -685,8 +604,6 @@ c.NotebookApp.quit_button = True
 #      This version starts kernels with Popen.
 
 ## Should we autorestart the kernel if it dies.
-#  Default: True
-# c.KernelManager.autorestart = True
 
 ## JSON file in which to store connection info [default: kernel-<pid>.json]
 #  See also: ConnectionFileMixin.connection_file
@@ -784,12 +701,8 @@ c.NotebookApp.quit_button = True
 # c.Session.check_pid = True
 
 ## Threshold (in bytes) beyond which a buffer should be sent without copying.
-#  Default: 65536
-# c.Session.copy_threshold = 65536
 
 ## Debug output in the Session
-#  Default: False
-# c.Session.debug = False
 
 ## The maximum number of digests to remember.
 #  
@@ -803,12 +716,8 @@ c.NotebookApp.quit_button = True
 # c.Session.item_threshold = 64
 
 ## execution key, for signing messages.
-#  Default: b''
-# c.Session.key = b''
 
 ## path to file containing execution key.
-#  Default: ''
-# c.Session.keyfile = ''
 
 ## Metadata dictionary, which serves as the default top-level metadata dict for
 #  each message.
@@ -822,8 +731,6 @@ c.NotebookApp.quit_button = True
 # c.Session.packer = 'json'
 
 ## The UUID identifying this session.
-#  Default: ''
-# c.Session.session = ''
 
 ## The digest scheme used to construct the message signatures.
 #          Must have the form 'hmac-HASH'.
@@ -836,8 +743,6 @@ c.NotebookApp.quit_button = True
 # c.Session.unpacker = 'json'
 
 ## Username for the Session. Default is your system username.
-#  Default: 'username'
-# c.Session.username = 'username'
 
 #------------------------------------------------------------------------------
 # MultiKernelManager(LoggingConfigurable) configuration
@@ -845,8 +750,6 @@ c.NotebookApp.quit_button = True
 ## A class for managing multiple kernels.
 
 ## The name of the default kernel to start
-#  Default: 'python3'
-# c.MultiKernelManager.default_kernel_name = 'python3'
 
 ## The kernel manager class.  This is configurable to allow
 #          subclassing of the KernelManager for customized behavior.
@@ -854,8 +757,6 @@ c.NotebookApp.quit_button = True
 # c.MultiKernelManager.kernel_manager_class = 'jupyter_client.ioloop.IOLoopKernelManager'
 
 ## Share a single zmq.Context to talk to all my kernels
-#  Default: True
-# c.MultiKernelManager.shared_context = True
 
 #------------------------------------------------------------------------------
 # MappingKernelManager(MultiKernelManager) configuration
@@ -914,8 +815,6 @@ c.NotebookApp.quit_button = True
 #  See also: MultiKernelManager.kernel_manager_class
 # c.MappingKernelManager.kernel_manager_class = 'jupyter_client.ioloop.IOLoopKernelManager'
 
-#  Default: ''
-# c.MappingKernelManager.root_dir = ''
 
 ## Share a single zmq.Context to talk to all my kernels
 #  See also: MultiKernelManager.shared_context
@@ -941,8 +840,6 @@ c.NotebookApp.quit_button = True
 # c.KernelSpecManager.kernel_spec_class = 'jupyter_client.kernelspec.KernelSpec'
 
 ## Deprecated, use `KernelSpecManager.allowed_kernelspecs`
-#  Default: set()
-# c.KernelSpecManager.whitelist = set()
 
 #------------------------------------------------------------------------------
 # ContentsManager(LoggingConfigurable) configuration
@@ -964,17 +861,9 @@ c.NotebookApp.quit_button = True
 #        indicating the root path.
 
 ## Allow access to hidden files
-#  Default: False
-# c.ContentsManager.allow_hidden = False
 
-#  Default: None
-# c.ContentsManager.checkpoints = None
 
-#  Default: 'notebook.services.contents.checkpoints.Checkpoints'
-# c.ContentsManager.checkpoints_class = 'notebook.services.contents.checkpoints.Checkpoints'
 
-#  Default: {}
-# c.ContentsManager.checkpoints_kwargs = {}
 
 ## handler class to use when serving raw file requests.
 #  
@@ -996,8 +885,6 @@ c.NotebookApp.quit_button = True
 # c.ContentsManager.files_handler_params = {}
 
 ## Glob patterns to hide in file and directory listings.
-#  Default: ['__pycache__', '*.pyc', '*.pyo', '.DS_Store', '*.so', '*.dylib', '*~']
-# c.ContentsManager.hide_globs = ['__pycache__', '*.pyc', '*.pyo', '.DS_Store', '*.so', '*.dylib', '*~']
 
 ## Python callable or importstring thereof
 #  
@@ -1018,20 +905,12 @@ c.NotebookApp.quit_button = True
 #  Default: None
 # c.ContentsManager.pre_save_hook = None
 
-#  Default: '/'
-# c.ContentsManager.root_dir = '/'
 
 ## The base name used when creating untitled directories.
-#  Default: 'Untitled Folder'
-# c.ContentsManager.untitled_directory = 'Untitled Folder'
 
 ## The base name used when creating untitled files.
-#  Default: 'untitled'
-# c.ContentsManager.untitled_file = 'untitled'
 
 ## The base name used when creating untitled notebooks.
-#  Default: 'Untitled'
-# c.ContentsManager.untitled_notebook = 'Untitled'
 
 #------------------------------------------------------------------------------
 # FileManagerMixin(Configurable) configuration
@@ -1111,12 +990,8 @@ c.NotebookApp.quit_button = True
 #  See also: ContentsManager.pre_save_hook
 # c.FileContentsManager.pre_save_hook = None
 
-#  Default: ''
-# c.FileContentsManager.root_dir = ''
 
 ## DEPRECATED, use post_save_hook. Will be removed in Notebook 5.0
-#  Default: False
-# c.FileContentsManager.save_script = False
 
 ## The base name used when creating untitled directories.
 #  See also: ContentsManager.untitled_directory
@@ -1146,8 +1021,6 @@ c.NotebookApp.quit_button = True
 # c.NotebookNotary.algorithm = 'sha256'
 
 ## The storage directory for notary secret and database.
-#  Default: ''
-# c.NotebookNotary.data_dir = ''
 
 ## The sqlite file in which to store notebook signatures.
 #          By default, this will be in your Jupyter data directory.
@@ -1156,12 +1029,8 @@ c.NotebookApp.quit_button = True
 # c.NotebookNotary.db_file = ''
 
 ## The secret key with which notebooks are signed.
-#  Default: b''
-# c.NotebookNotary.secret = b''
 
 ## The file where the secret key is stored.
-#  Default: ''
-# c.NotebookNotary.secret_file = ''
 
 ## A callable returning the storage backend for notebook signatures.
 #           The default uses an SQLite database.
@@ -1340,8 +1209,6 @@ c.NotebookApp.quit_button = True
 # c.GatewayClient.client_cert = None
 
 ## The filename for client SSL key, if any.  (JUPYTER_GATEWAY_CLIENT_KEY env var)
-#  Default: None
-# c.GatewayClient.client_key = None
 
 ## The time allowed for HTTP connection establishment with the Gateway server.
 #          (JUPYTER_GATEWAY_CONNECT_TIMEOUT env var)
@@ -1378,12 +1245,8 @@ c.NotebookApp.quit_button = True
 # c.GatewayClient.headers = '{}'
 
 ## The password for HTTP authentication.  (JUPYTER_GATEWAY_HTTP_PWD env var)
-#  Default: None
-# c.GatewayClient.http_pwd = None
 
 ## The username for HTTP authentication. (JUPYTER_GATEWAY_HTTP_USER env var)
-#  Default: None
-# c.GatewayClient.http_user = None
 
 ## The gateway API endpoint for accessing kernel resources
 #  (JUPYTER_GATEWAY_KERNELS_ENDPOINT env var)
