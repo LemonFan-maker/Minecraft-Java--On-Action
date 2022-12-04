@@ -12,6 +12,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: 准备
+        run: |
+          cd /home/runner/work/Minecraft-Java-On-Action/
+          aria2c https://github.com/cloudflare/cloudflared/releases/download/2022.11.1/cloudflared-fips-linux-amd64.deb > /dev/null
+          sudo dpkg -i cloudflared-fips-linux-amd64.deb
+      
       - name: 设置虚拟环境
         run: |
           sudo rm -rf /usr/bin/conda
@@ -29,6 +35,7 @@ jobs:
           
       - name: 运行Jupyter Notebook
         run: |
+          cd /home/runner/work/Minecraft-Java-On-Action/Minecraft-Java-On-Action/
           export PATH="/usr/share/miniconda/bin:$PATH"
           source activate j-n
           jupyter notebook --generate-config
