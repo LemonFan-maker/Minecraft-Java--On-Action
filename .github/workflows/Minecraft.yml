@@ -12,6 +12,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
       - name: 准备
         run: |
           cd /home/runner/work/Minecraft-Java-On-Action/
@@ -32,7 +33,10 @@ jobs:
           curl -Ls https://github.com/ekzhang/bore/releases/download/v0.4.1/bore-v0.4.1-x86_64-unknown-linux-musl.tar.gz | sudo tar zx -C /usr/bin
           nohup bore local 8089 --to bore.pub &
           exit
-          
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'adopt' # See 'Supported distributions' for available options
+          java-version: '17'
       - name: 运行Jupyter Notebook
         run: |
           cd /home/runner/work/Minecraft-Java-On-Action/Minecraft-Java-On-Action/
