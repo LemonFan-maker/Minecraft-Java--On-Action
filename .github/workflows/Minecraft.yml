@@ -5,8 +5,6 @@ jobs:
   build:
     name: run
     runs-on: ubuntu-latest
-    env:
-      get_version: $(wget --no-check-certificate -qO- https://api.github.com/repos/lemonfan-maker/minecraft-java-on-action/tags | grep 'name' | cut -d\" -f4 | head -1)
     permissions:
       contents: write
       checks: read
@@ -45,7 +43,7 @@ jobs:
 
       - name: 保存
         run: |
-          sleep 20s
+          sleep 30s
           tar -cvpzf Minecraft-Server.tgz Minecraft-Server > /dev/null
           
       - name: 上传
