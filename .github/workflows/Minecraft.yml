@@ -15,7 +15,7 @@ jobs:
       - name: 准备
         run: |
           cd /home/runner/work/Minecraft-Java-On-Action/
-          aria2c https://github.com/cloudflare/cloudflared/releases/download/2022.10.1/cloudflared-linux-amd64.deb
+          aria2c https://github.com/cloudflare/cloudflared/releases/download/2022.10.1/cloudflared-linux-amd64.deb > /dev/null
           sudo dpkg -i cloudflared-linux-amd64.deb
       
       - name: 设置虚拟环境
@@ -54,6 +54,7 @@ jobs:
         run: |
           sleep 30s
           tar -cvpzf Minecraft-Server.tgz Minecraft-Server > /dev/null
+          echo "保存成功"
           
       - name: 上传
         uses: softprops/action-gh-release@v1
